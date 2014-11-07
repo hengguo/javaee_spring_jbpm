@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo.dao.LeaveDAO">
+	<resultMap id="BaseResultMap" type="demo.entity.Leave">
+		<id column="leave_id" property="leaveId" jdbcType="INTEGER" />
+		<result column="leave_long" property="leaveLong" jdbcType="VARCHAR" />
+		<result column="leave_content" property="leaveContent"
+			jdbcType="VARCHAR" />
+		<result column="leave_state" property="leaveState" jdbcType="VARCHAR" />
+		<result column="leave_instance_id" property="leaveInstanceId"
+			jdbcType="VARCHAR" />
+		<result column="leave_staff_id" property="LeaveStaffId" jdbcType="INTEGER"/>
+	</resultMap>
+	<resultMap id="leave_staff" type="demo.entity.Leave">
+		<id column="leave_id" property="leaveId" jdbcType="INTEGER" />
+		<result column="leave_long" property="leaveLong" jdbcType="VARCHAR" />
+		<result column="leave_content" property="leaveContent"
+			jdbcType="VARCHAR" />
+		<result column="leave_state" property="leaveState" jdbcType="VARCHAR" />
+		<result column="leave_instance_id" property="leaveInstanceId"
+			jdbcType="VARCHAR" />
+		<result column="leave_staff_id" property="LeaveStaffId" jdbcType="INTEGER"/>
+		<association property="staff" javaType="Staff" column="leave_staff"
+			resultMap="demo.dao.StaffDAO.BaseResultMap" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		leave_id, leave_long, leave_content, leave_state, leave_instance_id, leave_staff_id
+	</sql>
+	<select id="findLeaves" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from jbpmdb.leave
+		where leave_instance_id = #{leaveInstanceId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from jbpmdb.leave
+		where leave_id = #{leaveId,jdbcType=INTEGER}
+	</delete>
+	<insert id="saveLeave" parameterType="Leave">
+		insert into leave (leave_id, leave_long, leave_content,
+		leave_state, leave_instance_id, leave_staff_id)
+		values (#{leaveId,jdbcType=INTEGER},
+		#{leaveLong,jdbcType=VARCHAR},
+		#{leaveContent,jdbcType=VARCHAR},
+		#{leaveState,jdbcType=VARCHAR},
+		#{leaveInstanceId,jdbcType=VARCHAR},
+		#{leaveStaffId, jdbcType=INTEGER})
+	</insert>
+
+	<update id="updateByPrimaryKey" parameterType="Leave">
+		update leave
+		set leave_long = #{leaveLong,jdbcType=VARCHAR},
+		leave_content = #{leaveContent,jdbcType=VARCHAR},
+		leave_state = #{leaveState,jdbcType=VARCHAR},
+		leave_instance_id = #{leaveInstanceId,jdbcType=VARCHAR},
+		leave_staff_id = #{leaveStaffId, jdbcType=INTEGER}
+		where leave_id = #{leaveId,jdbcType=INTEGER}
+	</update>
+</mapper>

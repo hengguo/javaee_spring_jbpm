@@ -5,7 +5,7 @@
 <transition to="printHelloWorld"/>
 </start>
  
-<java class="be.jorambarrez.jbpm4.helloworld.Printer" method="printHelloWorld" name="printHelloWorld" g="334,127,153,40">
+<java class="helloworld.Printer" method="printHelloWorld" name="printHelloWorld" g="334,127,153,40">
 <transition to="theEnd"/>
 </java>
  

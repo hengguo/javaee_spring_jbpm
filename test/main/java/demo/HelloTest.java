@@ -22,7 +22,7 @@ public class HelloTest extends TestCase {
 		executionService = processEngine.getExecutionService();
 		//将定义的流程配置文件部署到数据库中
 		deployId = repositoryService.createDeployment()
-				.addResourceFromClasspath("test.jpdl.xml")
+				.addResourceFromClasspath("helloworld.jpdl.xml")
 				.deploy();
 	}
 
@@ -34,7 +34,7 @@ public class HelloTest extends TestCase {
 	public void testEndHelloWorld() {
 		//启动流程实例
 		ProcessInstance processInstance = executionService
-				.startProcessInstanceByKey("hello");
+				.startProcessInstanceByKey("helloWorld");
 		//启动流程后我们的流程会自动进入到state1活动，并处在等待状态
 		assertTrue(processInstance.isActive("state1"));
 		String pid = processInstance.getId();
