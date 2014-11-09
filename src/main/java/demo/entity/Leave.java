@@ -7,11 +7,12 @@ package demo.entity;
 public class Leave implements java.io.Serializable {
 
 	// Fields
+	private Integer leaveId;
 	private String leaveLong;
 	private String leaveContent;
 	private String leaveState;
 	private String leaveInstanceId;
-	private Integer LeaveStaffId;
+	private Integer leaveStaffId;
 	private Staff staff;
 
 	// Constructors
@@ -78,14 +79,11 @@ public class Leave implements java.io.Serializable {
 	public void setLeaveInstanceId(String leaveInstanceId) {
 		this.leaveInstanceId = leaveInstanceId;
 	}
-	private Integer leaveId;
 	public Integer getLeaveStaffId() {
-		return LeaveStaffId;
+		return leaveStaffId;
 	}
 
 	public void setLeaveStaffId(Integer leaveStaffId) {
-		LeaveStaffId = leaveStaffId;
+		this.leaveStaffId = leaveStaffId;
 	}
-
-
 }
