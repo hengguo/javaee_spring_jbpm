@@ -15,7 +15,7 @@
     <br/>
     申请时长：<input type="text" name="leaveLong" value="${item.leaveLong}"/><br/>
     申请原因：<textarea rows="3" cols="15" name="leaveContent">${item.leaveContent}</textarea>
-    <input type="hidden" name="taskId" value="${item.taskId}"/>
+    <input type="hidden" name="taskId" value="${taskId}"/>
     <input type="submit" value="提交"/>
 	</c:forEach>
   </form>

@@ -102,9 +102,9 @@ public class JBPMServiceImpl implements JBPMService {
 	//更新请假信息的流程状态
 	public void updateLeave(Leave leave,String result) {		
 		
-		if(leave.getLeaveState()=="审核中"&&result=="批准"){
+		if(leave.getLeaveState().equals("审核中")&&result.equals("批准")){
 			leave.setLeaveState("经理审核通过");
-		}else if(leave.getLeaveState()=="经理审核通过"&&result=="批准"){
+		}else if(leave.getLeaveState().equals("经理审核通过")&&result.equals("批准")){
 			leave.setLeaveState("老板审核通过");
 		}
 		leaveDAO.updateLeave(leave);
@@ -142,15 +142,5 @@ public class JBPMServiceImpl implements JBPMService {
 		map.put("leaveLong", leaveLong);
 		map.put("leaveContent", leaveContent);
 		jBPMUtil.completeTask(taskId, map);
-	}
-
-	
-
-	
-	
-	
-	
-	
-	
-	
+	}	
 }

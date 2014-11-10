@@ -9,7 +9,7 @@
       <transition to="经理审批"/>
    </task>
    
-   <task assignee="manager" form="detailAction" g="203,191,80,40" name="经理审批">
+   <task assignee="#{manager}" form="detailAction" g="203,191,80,40" name="经理审批">
       <transition g="66,96" name="批准" to="exclusive1"/>
       <transition g="163,144:-21,-8" name="驳回" to="申请"/>
    </task>
@@ -17,7 +17,7 @@
       <transition g="47,275" name="结束" to="end1"/>
       <transition g="-26,-11" name="老板审批" to="老板审批"/>
    </decision>
-   <task assignee="boss" form="detailAction" g="369,284,80,40" name="老板审批">
+   <task assignee="#{boss}" form="detailAction" g="369,284,80,40" name="老板审批">
       <transition g="-29,-18" name="批准" to="end1"/>
       <transition g="-42,-18" name="驳回" to="申请"/>
    </task>
