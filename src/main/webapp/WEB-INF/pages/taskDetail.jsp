@@ -17,7 +17,7 @@
     	<p>目前状态：${item.leaveState}</p>
     	
 	</c:forEach>
-    <form action="examAction.action" method="post">
+    <form action="examAction" method="post">
     	<input type="hidden" name="taskId" value="${taskId}"/>
     	<input type="submit" name="result" value="批准"/>
     	<input type="submit" name="result" value="驳回"/>

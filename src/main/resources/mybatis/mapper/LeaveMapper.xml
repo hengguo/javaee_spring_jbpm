@@ -9,7 +9,7 @@
 		<result column="leave_state" property="leaveState" jdbcType="VARCHAR" />
 		<result column="leave_instance_id" property="leaveInstanceId"
 			jdbcType="VARCHAR" />
-		<result column="leave_staff_id" property="LeaveStaffId" jdbcType="INTEGER"/>
+		<result column="leave_staff_id" property="leaveStaffId" jdbcType="INTEGER"/>
 	</resultMap>
 	<resultMap id="leave_staff" type="demo.entity.Leave">
 		<id column="leave_id" property="leaveId" jdbcType="INTEGER" />
@@ -38,18 +38,17 @@
 		where leave_id = #{leaveId,jdbcType=INTEGER}
 	</delete>
 	<insert id="saveLeave" parameterType="Leave">
-		insert into leave (leave_id, leave_long, leave_content,
-		leave_state, leave_instance_id, leave_staff_id)
-		values (#{leaveId,jdbcType=INTEGER},
-		#{leaveLong,jdbcType=VARCHAR},
-		#{leaveContent,jdbcType=VARCHAR},
-		#{leaveState,jdbcType=VARCHAR},
-		#{leaveInstanceId,jdbcType=VARCHAR},
-		#{leaveStaffId, jdbcType=INTEGER})
+		insert into jbpmdb.leave (leave_long, leave_content, leave_state, leave_instance_id, leave_staff_id)
+		values (
+			#{leaveLong,jdbcType=VARCHAR},
+			#{leaveContent,jdbcType=VARCHAR},
+			#{leaveState,jdbcType=VARCHAR},
+			#{leaveInstanceId,jdbcType=VARCHAR},
+			#{leaveStaffId, jdbcType=INTEGER})
 	</insert>
 
-	<update id="updateByPrimaryKey" parameterType="Leave">
-		update leave
+	<update id="updateLeave" parameterType="Leave">
+		update jbpmdb.leave
 		set leave_long = #{leaveLong,jdbcType=VARCHAR},
 		leave_content = #{leaveContent,jdbcType=VARCHAR},
 		leave_state = #{leaveState,jdbcType=VARCHAR},
