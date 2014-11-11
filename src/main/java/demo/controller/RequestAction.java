@@ -29,11 +29,11 @@ public class RequestAction {
 		if(jBPMService.getAllPd().size()==0){	//如果还没有流程定义则发布
 			jBPMService.deployNew(resourceName);
 		}
+		String staffName = (String)request.getSession().getAttribute("staffName");
 		String pdId=jBPMService.getAllPd().get(0).getId();	//获得第一个Id
-		ProcessInstance processInstance=jBPMService.startPI((String)request.getSession().getAttribute("staffName"), pdId);		//开始流程实例
-		jBPMService.applyLeave((String)request.getSession().getAttribute("staffName"), leave.getLeaveLong(), leave.getLeaveContent(),
-					processInstance.getId());	//添加进入数据库
-		jBPMService.completeTask(jBPMService.getTaskId((String)request.getSession().getAttribute("staffName")),leave.getLeaveLong(), leave.getLeaveContent());	//完成任务
+		ProcessInstance processInstance=jBPMService.startPI(staffName, pdId);		//开始流程实例
+		jBPMService.applyLeave(staffName, leave.getLeaveLong(), leave.getLeaveContent(), processInstance.getId());	//添加进入数据库
+		jBPMService.completeTask(jBPMService.getTaskId(staffName),leave.getLeaveLong(), leave.getLeaveContent());	//完成任务
 		return  new ModelAndView("index");
 	}
 	

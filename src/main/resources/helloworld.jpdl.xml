@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <process name="helloWorld" xmlns="http://jbpm.org/4.0/jpdl">
-<start g="221,107,80,40">
-<transition to="printHelloWorld"/>
-</start>
- 
-<java class="helloworld.Printer" method="printHelloWorld" name="printHelloWorld" g="334,127,153,40">
-<transition to="theEnd"/>
-</java>
- 
-<end name="theEnd" g="569,146,80,40"/>
+	<start g="221,107,80,40">
+		<transition to="printHelloWorld" />
+	</start>
+
+	<java class="helloworld.Printer" method="printHelloWorld" name="printHelloWorld"
+		g="334,127,153,40">
+		<transition to="theEnd" />
+	</java>
+
+	<end name="theEnd" g="569,146,80,40" />
 </process>
