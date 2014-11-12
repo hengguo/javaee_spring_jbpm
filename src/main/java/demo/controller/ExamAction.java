@@ -18,6 +18,8 @@ import demo.service.JBPMService;
 public class ExamAction {
 	@Resource
 	private JBPMService jBPMService;
+	
+	//批准，驳回申请
 	@RequestMapping("examAction")
 	public String examAction(String taskId, String result){
 		Leave leave=jBPMService.getLeaveDetail(taskId).get(0);	//需要修改请假表中状态的数据，需要获得该记录

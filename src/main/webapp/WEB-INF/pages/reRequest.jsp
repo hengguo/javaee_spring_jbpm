@@ -6,19 +6,16 @@
   <head>
     <title>重新贴写申请请假</title>
   </head>
-  
   <body>
   <form action="reRequestAction" method="post">
-  		<c:forEach items="${leaveList}"  var="item">
-  
-  <label>申请人：${sessionScope.staffName}</label>
-    <br/>
-    申请时长：<input type="text" name="leaveLong" value="${item.leaveLong}"/><br/>
-    申请原因：<textarea rows="3" cols="15" name="leaveContent">${item.leaveContent}</textarea>
-    <input type="hidden" name="taskId" value="${taskId}"/>
-    <input type="submit" value="提交"/>
-	</c:forEach>
+  <c:forEach items="${leaveList}"  var="item">
+	  <label>申请人：${sessionScope.staffName}</label>
+	  <br/>
+	    申请时长：<input type="text" name="leaveLong" value="${item.leaveLong}"/><br/>
+	    申请原因：<textarea rows="3" cols="15" name="leaveContent">${item.leaveContent}</textarea>
+  	 <input type="hidden" name="taskId" value="${taskId}"/>
+     <input type="submit" value="提交"/>
+  </c:forEach>
   </form>
-  
   </body>
 </html>

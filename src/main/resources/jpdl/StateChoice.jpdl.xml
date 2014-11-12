@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="StateChoice" xmlns="http://jbpm.org/4.4/jpdl">
+   <start name="start1" g="41,220,48,48">
+   <transition name="wait for response"/>	
+   </start>
+   <state name="wait for response" g="111,218,123,52">
+      <transition name="accept" to="submit document" g="169,184:16,-22"/>
+      <transition name="reject" to="try again" g="168,301:49,4"/>
+   </state>
+   <state name="submit document" g="360,166,139,37"/>
+   <state name="try again" g="349,274,121,45"/>
+</process>

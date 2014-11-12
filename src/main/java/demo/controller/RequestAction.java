@@ -34,7 +34,7 @@ public class RequestAction {
 		ProcessInstance processInstance=jBPMService.startPI(staffName, pdId);		//开始流程实例
 		jBPMService.applyLeave(staffName, leave.getLeaveLong(), leave.getLeaveContent(), processInstance.getId());	//添加进入数据库
 		jBPMService.completeTask(jBPMService.getTaskId(staffName),leave.getLeaveLong(), leave.getLeaveContent());	//完成任务
-		return  new ModelAndView("index");
+		return new ModelAndView("index");
 	}
 	
 	//处理被驳回的请求
@@ -43,6 +43,6 @@ public class RequestAction {
 		Leave tmp=jBPMService.getLeaveDetail(taskId).get(0);
 		jBPMService.updateLeave(tmp,leave.getLeaveLong(), leave.getLeaveContent());
 		jBPMService.completeTask(taskId);
-		return  new ModelAndView("index");
+		return new ModelAndView("index");
 	}
 }

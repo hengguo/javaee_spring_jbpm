@@ -40,7 +40,6 @@ public class DetailAction {
 		return mav;
 	}
 
-
 	public List<Leave> getLeaveList() {
 		return leaveList;
 	}

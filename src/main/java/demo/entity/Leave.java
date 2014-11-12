@@ -11,7 +11,7 @@ public class Leave implements java.io.Serializable {
 	private String leaveLong;
 	private String leaveContent;
 	private String leaveState;
-	private String leaveInstanceId;
+	private String leaveInstanceId;//请假条对应的流程实例
 	private Integer leaveStaffId;
 	private Staff staff;
 
