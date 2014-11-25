@@ -31,7 +31,7 @@ public abstract class BaseTestCase {
 		
 		@After
 		public void tearDown() {
-			repositoryService.deleteDeploymentCascade(deployId);
+			//repositoryService.deleteDeploymentCascade(deployId);
 		}
 		
 		protected abstract String getResourcePath();

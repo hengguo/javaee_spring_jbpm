@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="DecisionHandler" xmlns="http://jbpm.org/4.4/jpdl">
+   <start g="38,167,48,48" name="start1">
+      <transition to="evaluate document"/>
+   </start>
+   <decision g="254,175,48,48" name="evaluate document">
+      <handler class="demo.decision.handler.ContentEvaluation" />
+      <transition g="-56,-22" name="good" to="submit document"/>
+      <transition g="-56,-22" name="bad" to="try again"/>
+      <transition g="-56,-22" name="ugly" to="give up"/>
+   </decision>
+   <state g="403,72,154,52" name="submit document"/>
+   <state g="428,192,92,52" name="try again"/>
+   <state g="421,312,92,52" name="give up"/>
+</process>

@@ -23,6 +23,12 @@ public class StateChoiceTest extends BaseTestCase {
 		//让state1活动继续往下执行，并进入结束活动，流程结束
 		processInstance = executionService.signalExecutionById(exeId, "accept");
 		Assert.assertEquals(true, processInstance.isActive("submit document"));
+		//状态
+		Assert.assertEquals(true, processInstance.isActive("submit document"));
+		String submitDocumentId = processInstance.findActiveExecutionIn("submit document").getId();
+		executionService.signalExecutionById(submitDocumentId);
+
+		Assert.assertFalse(processInstance.isEnded());
 	}
 	
 
