@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="TaskAssignee" xmlns="http://jbpm.org/4.4/jpdl">
+   <start g="24,231,34,38">
+      <transition to="review"/>
+   </start>
+   <task assignee="#{order.owner}" g="134,230,92,52" name="review">
+      <transition to="wait"/>
+   </task>
+   <state g="275,236,92,52" name="wait"/>
+</process>

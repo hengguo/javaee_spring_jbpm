@@ -2,8 +2,10 @@ package demo;
 
 import org.jbpm.api.Configuration;
 import org.jbpm.api.ExecutionService;
+import org.jbpm.api.IdentityService;
 import org.jbpm.api.ProcessEngine;
 import org.jbpm.api.RepositoryService;
+import org.jbpm.api.TaskService;
 import org.junit.After;
 import org.junit.Before;
 
@@ -17,12 +19,16 @@ public abstract class BaseTestCase {
 		public static RepositoryService repositoryService = null;
 		//主要用来启动流程，执行流程
 		public static ExecutionService executionService = null;
+		public static IdentityService identityService = null;
+		public static TaskService taskService = null;
 
 		@Before
 		public void setUp() {
 			processEngine = new Configuration().buildProcessEngine();
 			repositoryService = processEngine.getRepositoryService();
 			executionService = processEngine.getExecutionService();
+			identityService = processEngine.getIdentityService();
+			taskService = processEngine.getTaskService();
 			//将定义的流程配置文件部署到数据库中
 			deployId = repositoryService.createDeployment()
 					.addResourceFromClasspath(getResourcePath())

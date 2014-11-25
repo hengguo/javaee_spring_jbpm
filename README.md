@@ -24,4 +24,5 @@ Process
   fork-join: 流程并发执行
   
   task(人工任务活动): 
+    assignee属性引用了一个用户，即负责完成任务的人。
   

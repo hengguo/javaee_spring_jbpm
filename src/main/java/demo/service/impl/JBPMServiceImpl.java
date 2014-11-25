@@ -136,8 +136,7 @@ public class JBPMServiceImpl implements JBPMService {
 		return jBPMUtil.getAllPdList();
 	}
 
-	public void completeTask(String taskId, String leaveLong,
-			String leaveContent) {
+	public void completeTask(String taskId, String leaveLong,String leaveContent) {
 		Map map=new HashMap();
 		map.put("leaveLong", leaveLong);
 		map.put("leaveContent", leaveContent);
