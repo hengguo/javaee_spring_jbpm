@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="EventListener" xmlns="http://jbpm.org/4.4/jpdl">
+	<!-- 全局的流程事件，监听start事件 -->
+	<on event="start">
+		<event-listener class="demo.eventlistener.LogListener">
+			<!-- 为此事件监听注入域注入msg的值 -->
+			<field name="msg">
+				<string value="start on process defination"/>
+			</field>
+		</event-listener>
+	</on>
+	<start g="25,147,80,40">
+		<transition to="wait"/>
+	</start>
+	<state name="wait" g="89,232,80,40">
+		<on event="start">
+			<event-listener class="demo.eventlistener.LogListener">
+				<!-- 为此事件监听注入域注入msg的值 -->
+				<field name="msg">
+					<string value="start on activity wait"/>
+				</field>
+			</event-listener>
+		</on>
+		<on event="end">
+			<event-listener class="demo.eventlistener.LogListener">
+				<!-- 为此事件监听注入域注入msg的值 -->
+				<field name="msg">
+					<string value="end on activity wait"/>
+				</field>
+			</event-listener>
+		</on>
+		<transition to="park">
+			<event-listener class="demo.eventlistener.LogListener">
+				<!-- 为此事件监听注入域注入msg的值 -->
+				<field name="msg">
+					<string value="take transaction"/>
+				</field>
+			</event-listener>
+		</transition>
+	</state>
+	<state name="park" g="245,232,80,40"/>
+</process>
