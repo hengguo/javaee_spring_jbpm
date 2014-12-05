@@ -1,5 +1,6 @@
 package demo;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -7,6 +8,8 @@ import org.jbpm.api.ProcessInstance;
 import org.jbpm.api.task.Task;
 import org.junit.Assert;
 import org.junit.Test;
+
+import demo.entity.Order;
 
 public class TaskAssignmentHandlerTest extends BaseTestCase {
 
@@ -18,9 +21,11 @@ public class TaskAssignmentHandlerTest extends BaseTestCase {
 	@Test
 	public void test(){
 		//启动流程实例
-		ProcessInstance processInstance = executionService.startProcessInstanceByKey("TaskAssignmentHandler");
+		Map<String, Object> variables = new HashMap<String, Object>();
+		variables.put("order", new Order("alex"));
+		ProcessInstance processInstance = executionService.startProcessInstanceByKey("TaskAssignmentHandler", variables);
 		
-		List<Task> taskList = taskService.findPersonalTasks("andrew");
+		List<Task> taskList = taskService.findPersonalTasks("alex");
 //		Assert.assertTrue(taskList.size() == 1);
 		for (Task task : taskList) {
 			Assert.assertEquals("review", task.getName());
@@ -30,7 +35,6 @@ public class TaskAssignmentHandlerTest extends BaseTestCase {
 //				System.out.println(entry.getKey()+" - "+entry.getValue());
 //			}
 		}
-		Assert.assertTrue(processInstance.isEnded());
 	}
 	
 

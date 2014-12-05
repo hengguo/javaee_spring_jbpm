@@ -17,8 +17,7 @@ public class ConcurrencyGraphBasedTest extends BaseTestCase {
 	@Test
 	public void test(){
 		//发起流程实例
-		ProcessInstance processInstance = executionService
-				.startProcessInstanceByKey("ConcurrencyGraphBased");
+		ProcessInstance processInstance = executionService .startProcessInstanceByKey("ConcurrencyGraphBased");
 		String pid = processInstance.getId();
 		Set<String> expectedActivityNames = new HashSet<String>();
 		expectedActivityNames.add("send invoice");

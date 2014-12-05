@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <process name="TaskAssignmentHandler" xmlns="http://jbpm.org/4.4/jpdl">
-   <start g="28,184,48,48" name="start1">
-      <transition to="review"/>
-   </start>
-   <task g="142,184,92,52" name="review">
-      <assignment-handler class="demo.task.assignmenthandler.AssignTask">
-      	<field name="assignee">
-      		<string value="andrew"/>
-      	</field>
-      </assignment-handler>
-      <transition to="end1" name="T2" g="-5,-22"/>
-   </task>
-   <end g="306,184,48,48" name="end1"/>
+	<start g="28,184,48,48" name="start1">
+		<transition to="review" />
+	</start>
+	<task g="142,184,92,52" name="review">
+		<assignment-handler class="demo.task.assignmenthandler.AssignTask" />
+		<transition to="end1" name="T2" g="-5,-22" />
+	</task>
+	<end g="306,184,48,48" name="end1" />
 </process>

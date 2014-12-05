@@ -7,5 +7,14 @@
    <task assignee="#{order.owner}" g="134,230,92,52" name="review">
       <transition to="wait"/>
    </task>
-   <state g="275,236,92,52" name="wait"/>
+   <state g="275,236,92,52" name="wait">
+      <transition to="submit"/>
+   </state>
+   <task candidate-groups="sales-dept" g="433,242,92,52" name="submit">
+      <transition to="last"/>
+   </task>
+   <state g="605,275,92,52" name="last">
+      <transition to="end1"/>
+   </state>
+   <end g="683,169,48,48" name="end1"/>
 </process>
